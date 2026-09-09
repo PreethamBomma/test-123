@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="500" height="300">
+
+  <rect width="500" height="300" fill="white"/>
+
+  <!-- Mixed-case event attributes -->
+  <g OnLoAd="alert('SVG-04-CASE')">
+    <circle cx="70" cy="70" r="40" fill="red"/>
+  </g>
+
+  <!-- CDATA JavaScript -->
+  <script><![CDATA[
+    alert('SVG-04-CDATA');
+  ]]></script>
+
+  <!-- Entity-encoded text inside script -->
+  <script>
+    alert(&quot;SVG-04-ENTITY&quot;);
+  </script>
+
+  <!-- Namespaced animation event -->
+  <animateTransform
+      attributeName="transform"
+      type="rotate"
+      dur="1s"
+      onBEGIN="alert('SVG-04-ANIMATION')"/>
+
+  <!-- Potentially active link -->
+  <a href="javascript:alert('SVG-04-LINK')">
+    <text x="20" y="180" font-size="20">Link test</text>
+  </a>
+
+  <!-- Benign marker -->
+  <text x="20" y="240" font-size="18">SVG-04-BENIGN-MARKER</text>
+</svg>

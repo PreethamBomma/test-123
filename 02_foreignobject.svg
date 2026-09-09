@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xhtml="http://www.w3.org/1999/xhtml"
+     width="400" height="200">
+
+  <rect width="400" height="200" fill="white"/>
+
+  <foreignObject x="20" y="20" width="360" height="150">
+    <xhtml:div xmlns="http://www.w3.org/1999/xhtml"
+               onload="alert('SVG-02-ONLOAD')"
+               style="font-size:20px">
+      foreignObject test
+    </xhtml:div>
+  </foreignObject>
+
+  <script>alert('SVG-02-SCRIPT')</script>
+</svg>
