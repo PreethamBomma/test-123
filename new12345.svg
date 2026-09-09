@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400"
+     height="400"
+     viewBox="0 0 400 400">
+
+  <title>SVG XSS Security Test</title>
+
+  <rect width="400" height="400" rx="24" fill="#eeeeee"/>
+
+  <!-- 1. SVG script -->
+  <script>
+    alert('SVG-XSS-1');
+  </script>
+
+  <!-- 2. SVG script with CDATA -->
+  <script type="application/ecmascript"><![CDATA[
+    alert('SVG-XSS-2');
+  ]]></script>
+
+  <!-- 3. animateTransform onbegin -->
+  <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="0 200 200"
+      to="360 200 200"
+      dur="1s"
+      onbegin="alert('SVG-XSS-3')"/>
+
+  <!-- 4. SVG element onload -->
+  <g onload="alert('SVG-XSS-4')">
+    <circle cx="100" cy="100" r="30"
+            fill="none"
+            stroke="black"/>
+  </g>
+
+  <!-- 5. Image onload -->
+  <image
+      x="10"
+      y="150"
+      width="80"
+      height="80"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      onload="alert('SVG-XSS-5')"/>
+
+  <!-- 6. javascript URI -->
+  <a href="javascript:alert('SVG-XSS-6')">
+    <text x="110"
+          y="175"
+          font-family="Arial"
+          font-size="16">
+      Click test link
+    </text>
+  </a>
+
+  <!-- 7. foreignObject / XHTML -->
+  <foreignObject x="10" y="250" width="180" height="80">
+    <div xmlns="http://www.w3.org/1999/xhtml"
+         onload="alert('SVG-XSS-7')">
+      SVG foreignObject test
+    </div>
+  </foreignObject>
+
+  <!-- 8. Graphical element event handler -->
+  <rect x="220"
+        y="250"
+        width="120"
+        height="60"
+        fill="none"
+        stroke="black"
+        onclick="alert('SVG-XSS-8')"/>
+
+</svg>
